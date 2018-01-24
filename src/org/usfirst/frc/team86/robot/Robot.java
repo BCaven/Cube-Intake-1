@@ -7,6 +7,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -16,6 +17,7 @@ public class Robot extends TimedRobot {
     private TalonSRX left2;
     private TalonSRX right1;
     private TalonSRX right2;
+    private CubeGrabber CubeGrabber;
     
     private TalonDrive driveTrain;
     
@@ -26,6 +28,9 @@ public class Robot extends TimedRobot {
     
     @Override
     public void robotInit() {
+    	
+    	CubeGrabber = new CubeGrabber(IO.mot1,IO.mot2,IO.grab1,IO.grab2,IO.banSens);
+    	
         left1 = new TalonSRX(57);
         left1.setInverted(true);
         left1.setSensorPhase(false); //?
@@ -53,9 +58,18 @@ public class Robot extends TimedRobot {
         left = new Joystick(0);
         right = new Joystick(1);
     }
+    
+	@Override
+	public void autonomousInit() {
+	}
 
-    @Override
+	@Override
+	public void autonomousPeriodic() {
+		}
+	
+	@Override
     public void teleopPeriodic() {
+		IO.compressorRelay.set(IO.compressor.enabled() ? Relay.Value.kForward : Relay.Value.kOff);  //??
         driveTrain.drive(left.getY(), right.getY());
         
         SmartDashboard.putNumber("Left", left.getY() * driveTrain.getMaxFloorSpeed()); //math for getMaxFloorSpeed
