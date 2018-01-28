@@ -17,7 +17,7 @@ public class Robot extends TimedRobot {
     private TalonSRX left2;
     private TalonSRX right1;
     private TalonSRX right2;
-    private CubeGrabber CubeGrabber;
+  
     
     private TalonDrive driveTrain;
     
@@ -29,7 +29,7 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() {
     	
-    	CubeGrabber = new CubeGrabber(IO.mot1,IO.mot2,IO.grab1,IO.grab2,IO.banSens);
+    
     	
         left1 = new TalonSRX(57);
         left1.setInverted(true);

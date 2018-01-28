@@ -15,7 +15,6 @@ public class TalonDrive {
     private double pulsesPerRevolution;//r?
     private double maxMotorRPM;
     private double wheelCircumference;
-    //used for
     private Gear gear;//?
     
     public TalonDrive(TalonSRX left1, TalonSRX left2, TalonSRX right1, TalonSRX right2) {

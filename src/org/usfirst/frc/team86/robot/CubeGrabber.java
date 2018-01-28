@@ -38,7 +38,7 @@ public class CubeGrabber {
 				state = 0;
 			} else {
 				mot1.set(.5);
-				mot1.set(-.5); // to be changed
+				mot2.set(-.5); // to be changed
 			}
 			break;
 		case 2:

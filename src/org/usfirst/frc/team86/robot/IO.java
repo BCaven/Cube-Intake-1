@@ -13,7 +13,8 @@ public class IO {
 public static Victor mot1 = new Victor(1);
 public static Victor mot2 = new Victor(2);
 
-public static DigitalInput banSens = new DigitalInput(1);	
+public static DigitalInput banSensL = new DigitalInput(1);	//change channel #
+public static DigitalInput banSensR = new DigitalInput(2);
 
 public static Joystick leftStick = new Joystick(0);	
 public static Joystick rightStick = new Joystick(1);
