@@ -1,3 +1,13 @@
+/*
+ * TODO:
+ 	* change button ports to correct port
+ 	* change solenoid ports to correct ports
+ 	* change motor ports to correct ports
+ 	* test this on the robot
+ */
+
+
+
 package org.usfirst.frc.team86.robot;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -34,11 +44,10 @@ public class CubeGrabberv3 {
 		case 0:
 			mot1.set(0);
 			mot2.set(0);
-			if (banSensR.get() && banSensL.get()) {
-				if (IO.rightStick.getRawButton(1)) { // button # change
+			grab1.set(false);
+			grab2.set(false);
+			if (banSensR.get() && banSensL.get() && IO.rightStick.getRawButton(1)) { // TODO: change to correct ports
 					state = 2;
-
-				}
 			} else {
 				if (IO.rightStick.getRawButton(1)) { // button # change
 					state = 1;
@@ -60,13 +69,13 @@ public class CubeGrabberv3 {
 				
 				// all these need to be changed with new info
 			} else if (banSensL.get() && !banSensR.get()) { // box is uneven towards left side
-				mot1.set(.75);
-				mot2.set(-.25);
+				mot1.set(.60);
+				mot2.set(-.40);
 				grab1.set(false);
 				grab2.set(true);
 			} else if (!banSensL.get() && banSensR.get()) { // box is uneven towards right side
-				mot1.set(.25);
-				mot2.set(-.75);
+				mot1.set(.40);
+				mot2.set(-.60);
 				grab1.set(true);
 				grab2.set(false);
 			} else { // no input from ban sensors, intake is open, motors not running
@@ -74,13 +83,14 @@ public class CubeGrabberv3 {
 				mot2.set(0);
 				grab1.set(false);
 				grab2.set(false); 
+				state = 2;
 			}
 			break;
 		case 2:
 			mot1.set(0);
 			mot2.set(0);
-			grab1.set(false);
-			grab2.set(false);
+			grab1.set(true);
+			grab2.set(true);
 			if (IO.rightStick.getRawButton(1)) {
 				state = 0;
 			}
@@ -88,8 +98,3 @@ public class CubeGrabberv3 {
 		}
 	}
 }
-			
-		
-		
-	
-
