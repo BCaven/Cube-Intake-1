@@ -6,8 +6,6 @@
  Push joystick back: sucks cube in
  push right: adjusts right
  push left: adjusts left
- 
- TODO: add sensitivity controls
  */
 package org.usfirst.frc.team86.robot;
 
@@ -59,20 +57,20 @@ public class Teleop {
 			mot2.set(IO.rightStick.getX());
 			grab1.set(false);
 			grab2.set(false);
-			if (!banSensL.get() && !banSensR.get()) { // box successfully 
+			if (!banSensL.get() && !banSensR.get()) { // box successfully spit out
 				state = 0;
 			}
 			break;
-		case 2: // suck in
+		case 2: // suck box in
 			mot1.set(IO.rightStick.getX());
 			mot2.set(-IO.rightStick.getX());
 			grab1.set(true);
 			grab2.set(true);
-			if (banSensL.get() && banSensR.get()) {
+			if (banSensL.get() && banSensR.get()) { // box is in, go back to checking state
 				state = 0;
-			} else if(IO.rightStick.getY() > 0) {
+			} else if(IO.rightStick.getY() > 0) { // box is not aligned
 				state = 3;
-			} else if (IO.rightStick.getY() < 0) {
+			} else if (IO.rightStick.getY() < 0) { // box is not aligned
 				state = 4;
 			}
 			break;
