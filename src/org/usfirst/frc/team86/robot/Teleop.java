@@ -55,8 +55,8 @@ public class Teleop {
 			}
 			break;
 		case 1: // spit out
-			mot1.set(-.5);
-			mot2.set(.5);
+			mot1.set(-IO.rightStick.getX());
+			mot2.set(IO.rightStick.getX());
 			grab1.set(false);
 			grab2.set(false);
 			if (!banSensL.get() && !banSensR.get()) { // box successfully 
@@ -64,8 +64,8 @@ public class Teleop {
 			}
 			break;
 		case 2: // suck in
-			mot1.set(.5);
-			mot2.set(-.5);
+			mot1.set(IO.rightStick.getX());
+			mot2.set(-IO.rightStick.getX());
 			grab1.set(true);
 			grab2.set(true);
 			if (banSensL.get() && banSensR.get()) {
