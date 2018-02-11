@@ -29,6 +29,22 @@ public class CubeGrabber {
 
 	public void grabberUpdate() {
 		switch (state) {
+		case 0:
+			mot1.set(0);
+			mot2.set(0);
+			if (banSens.get()) {
+				if (IO.rightStick.getRawButton(1)) { // button # change stick change
+					grab1.set(false);
+					grab2.set(false);
+					state = 2;
+					
+				}
+			} else {
+				if (IO.rightStick.getRawButton(1)) { // button # change
+					state = 1;
+				}
+			}
+			break;
 		case 1:
 			if (banSens.get()) {
 				mot1.set(0);
@@ -51,22 +67,7 @@ public class CubeGrabber {
 				mot1.set(.5); // to be changed
 			}
 			break;
-		default:
-			mot1.set(0);
-			mot2.set(0);
-			if (banSens.get()) {
-				if (IO.rightStick.getRawButton(1)) { // button # change
-					grab1.set(false);
-					grab2.set(false);
-					state = 2;
-					
-				}
-			} else {
-				if (IO.rightStick.getRawButton(1)) { // button # change
-					state = 1;
-				}
-			}
-			break;
+	
 		}
 	}
 
