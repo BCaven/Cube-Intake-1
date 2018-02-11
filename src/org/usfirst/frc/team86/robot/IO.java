@@ -16,8 +16,8 @@ public static Victor mot2 = new Victor(2);
 public static DigitalInput banSensL = new DigitalInput(1);	//change channel #
 public static DigitalInput banSensR = new DigitalInput(2);
 
-public static Joystick leftStick = new Joystick(0);	
-public static Joystick rightStick = new Joystick(1);
+//public static Joystick leftStick = new Joystick(0);	
+//public static Joystick rightStick = new Joystick(1);
 	
 public static Solenoid grab1 = new Solenoid(1,1);	
 public static Solenoid grab2 = new Solenoid(1,2);	//change channel #

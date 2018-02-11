@@ -18,7 +18,7 @@ public class Robot extends TimedRobot {
     private TalonSRX right1;
     private TalonSRX right2;
   
-    
+    private TeleGrab grab;
     private TalonDrive driveTrain;
     
     private Joystick left;
@@ -57,6 +57,9 @@ public class Robot extends TimedRobot {
         
         left = new Joystick(0);
         right = new Joystick(1);
+        
+        grab = new TeleGrab(IO.mot1,IO.mot2,IO.grab1,IO.grab2);
+        grab.grabberInit();
     }
     
 	@Override
@@ -84,5 +87,7 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumber("left2 velocity", left2.getSelectedSensorVelocity(0) / TalonDrive.SCALE_FACTOR);
         SmartDashboard.putNumber("right1 velocity", right1.getSelectedSensorVelocity(0) / TalonDrive.SCALE_FACTOR);
         SmartDashboard.putNumber("right2 velocity", right2.getSelectedSensorVelocity(0) / TalonDrive.SCALE_FACTOR);
+        
+        grab.grabberUpdate();
     }
 }
